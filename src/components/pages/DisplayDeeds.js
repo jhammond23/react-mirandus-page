@@ -17,41 +17,42 @@ const DisplayDeeds = () => {
       };
 
     return (
-        <div className='r-deedsBG'>
-            <header className='r-deedSelectorTitle'>EED</header>
+        <div className='r-background'>
+            <div className='r-deedsBG'>
+                <header className='r-deedSelectorTitle'>EED</header>
 
 
-            <br />
+                <br />
 
-            <div className='r-deedSelectorContainer'>
-                <div className='r-deedSelector' ref={ref}>
-                    <button className='r-scrollBtnTL' onClick={() => scroll(-150)}></button>
+                <div className='r-deedSelectorContainer'>
+                    <div className='r-deedSelector' ref={ref}>
+                        <button className='r-scrollBtnTL' onClick={() => scroll(-150)}></button>
 
-                    {deeds.map((deed) => (
-                        <Tilt>
-                            <button className={`r-${deed}`}
-                                onClick={() => setmyDeed(deed)}
-                                key={deed}
-                            >
-                                <div className='r-deedNames'>{deed}</div>
-                            </button>
-                        </Tilt>
+                        {deeds.map((deed) => (
+                            <Tilt>
+                                <button className={`r-${deed}`}
+                                    onClick={() => setmyDeed(deed)}
+                                    key={deed}
+                                >
+                                    <div className='r-deedNames'>{deed}</div>
+                                </button>
+                            </Tilt>
 
-                    ))}
-                    <button className='r-scrollBtnTR' onClick={() => scroll(150)}></button>
+                        ))}
+                        <button className='r-scrollBtnTR' onClick={() => scroll(150)}></button>
+
+                    </div>
+                </div>
+                <div className='r-background'>
+                    {myDeed === 'Homestead' && <Homestead />}
+                    {myDeed === 'Outpost' && <Outpost />}
+                    {myDeed === 'Hamlets' && <Hamlet />}
+                    {myDeed === 'Villages' && <Village />}
+                    {myDeed === 'Towns' && <Town />}
 
                 </div>
             </div>
-            <div className='r-background'>
-                {myDeed === 'Homestead' && <Homestead />}
-                {myDeed === 'Outpost' && <Outpost />}
-                {myDeed === 'Hamlets' && <Hamlet />}
-                {myDeed === 'Villages' && <Village />}
-                {myDeed === 'Towns' && <Town />}
-
-            </div>
         </div>
-
     )
 }
 

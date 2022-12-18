@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Dropdown from './Dropdown';
+import { useLocation } from 'react-router-dom';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
+  const location = useLocation();
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(true);
 
-
+  useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+  }, [location]);
   const onMouseEnter = () => {
     if (window.innerWidth < 1050) {
       setDropdown(false);
@@ -33,7 +39,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='logoContainer'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          <Link to='/mirandushub' className='navbar-logo' onClick={closeMobileMenu}>
             MIRANDUS HUB
           </Link>
         </div>
@@ -45,7 +51,7 @@ function Navbar() {
 
 
           <li className='nav-item'>
-            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/mirandushub' className='nav-links' onClick={closeMobileMenu}>
               Home
             </Link>
           </li>

@@ -36,7 +36,7 @@ export default function Home () {
             <div className="orb3"></div>
             <div className="orb4"></div>
             <div className="orb5"></div>
-            <div className="homeMirandusDescriptionContainer">
+            <div className="homeMirandusDescriptionContainer r-background">
                 <h1 className="homeHeader">What is Mirandus?</h1>
                 <div className="homeinfocont">
                   <div className="container">

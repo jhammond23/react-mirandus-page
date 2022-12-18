@@ -11,6 +11,8 @@ import homeThreeDImg from '../NFTpics/landDeeds/homestead/homestead3D.png';
 
 //Flat Img
 import homeFlatImg from '../NFTpics/landDeeds/homestead/homesteadLayout.png';
+import homeFlatImgB from '../NFTpics/landDeeds/homestead/homesteadLayoutB.png';
+import homeFlatImgS from '../NFTpics/landDeeds/homestead/homesteadLayoutS.png';
 
 
 const homesteads = [
@@ -22,6 +24,8 @@ const homesteads = [
         threeDImg : homeThreeDImg,
         total : 1000,
         flatImg : homeFlatImg,
+        flatImgB : homeFlatImgS,
+        flatImgS : homeFlatImgB,
         Img : homeImg,
         houseSize : '10x10',
         FP5x5 : 1,

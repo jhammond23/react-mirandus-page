@@ -1,21 +1,58 @@
 import React from 'react'
 import Tilt from 'react-parallax-tilt';
-import {Carousel} from '3d-react-carousal';
 import InnerImageZoom from 'react-inner-image-zoom';
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
+import Carousel from 'react-spring-3d-carousel';
+import { config } from "react-spring";
+import { useState } from 'react';
+
 
 
 
 const Deed = ({deed}) => {
+  const [state, setState] = React.useState({
+    goToSlide: 0,
+    offsetRadius: 2,
+    showNavigation: true,
+    config: config.gentle
+
+  });
+
+
   let slides = [
-    <img className='carousel-img' src={deed.threeDImg} alt="1" />  ,
+    {
+      key : 'photo1',
+      content: <div className='carousel-img-background'>
+                  <img className='carousel-img main-img' src={deed.threeDImg} alt="1" />
+                </div>,
+    },
+    {
+      key : 'photo2',
+      content : <div className='carousel-img-background'>
+                  <img className='carousel-img main-img' src={deed.Img} alt="2" />
+                </div>,
 
-    <div className='carousel-img-background'>
-      <img className='carousel-img main-img' src={deed.Img} alt="2" />
-    </div>,
+    },
+    {
+      key : 'photo3',
+      content : <InnerImageZoom className='carousel-img' src={deed.flatImg}  zoomSrc={deed.flatImg} alt='3'/>
 
-    <InnerImageZoom className='carousel-img' src={deed.flatImg} zoomSrc={deed.flatImg} alt='3'/>
-  ]
+    }
+  ].map((slide, index) => {
+    return { ...slide, onClick: () => setGoToSlide(index) };
+  });
+
+  const [goToSlide, setGoToSlide] = useState(0);
+  const [offsetRadius, setOffsetRadius] = useState(2);
+  const [showNavigation, setShowNavigation] = useState(true);
+  const [animationConfig, setAnimationConfig] = useState(config.gentle);
+
+  const onChangeInput = e => {
+    setState({
+      [e.target.name]: parseInt(e.target.value, 10) || 0
+    });
+  };
+
   return (
     <div className='r-deedOuterCont'>
       <div className='r-deedInfoCont'>
@@ -50,7 +87,11 @@ const Deed = ({deed}) => {
               </div>
             </div>
           </section>
-          <Carousel slides={slides}/>
+          <div className='carouselCont'>
+            <InnerImageZoom className='carousel-img' src={deed.flatImg}  zoomScale={.7} zoomSrc={deed.flatImg} alt='1'/>
+            <InnerImageZoom className='carousel-img' src={deed.Img}  zoomScale={.8} zoomSrc={deed.Img} alt='2'/>
+            <InnerImageZoom className='carousel-img' src={deed.threeDImg}  zoomScale={1} zoomSrc={deed.threeDImg} alt='3'/>
+          </div>
       </div>
     </div>
   )
